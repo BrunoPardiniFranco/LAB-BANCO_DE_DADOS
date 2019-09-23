@@ -1,0 +1,83 @@
+---------------------------------------------------------------------------------------------------------------------------------------------
+PLSQL GUIDE
+---------------------------------------------------------------------------------------------------------------------------------------------
+FUNÇÕES DE AGREGAÇÃO:
+	Count
+	Min
+	Max
+	Avg
+	Sum
+	
+Em todas as situações nas quais usamos funções agregadas, devemos agrupar as colunas que não fazem parte da coluna agregada por meio
+da cláusula GRUOUP BY [NOME COLUNA]
+
+UNION -> U
+Intersect -> ^
+IN -> C 
+Not In -> 
+
+=============================================================================================
+DDL -> Data Definition Language
+
+CREATE TABLE -> Colocar as colunas com os tipo e a cardinalidade (null, not null)
+
+ALTER TABLE -> Usamos para adicionarmos primary key ou foreing key (Boa prática):
+	ALTER TABLE TB_X ADD CONSTRAINT PK_TB_X Primary Key(Codigo)
+	ALTER TABLE TB_FILHA ADD CONSTRAINT FX_XPTO FOREIGN KEY(COD_FILHO) REFERENCES TB_X
+	
+	ALTER TABLE TB_X ADD CONSTRAINT PK_TB_X Primary Key(Codigo, DATA)
+	ALTER TABLE TB_FILHA ADD CONSTRAINT FX_XPTO FOREIGN KEY(COD_FILHO, DATA_FILHA) REFERENCES TB_X
+
+================================================================================================
+small-int - 2 bytes
+int - 4 bytes
+long - 8 bytes
+
+==========================================================================
+Senha pra acessar o banco da fatec: USER: SYSTEM, SENHA: ALUNOFATEC
+
+Services.MSC =>ORACLE SERVICE, ORACLE TNS LISTENER
+
+SENHA do MEU BANCO: user: system, senha: admin
+========================================================================================================================================
+STORED PROCEDURES
+========================================================================================================================================
+--------------------------------------------------------------------
+CREATE OR REPLACE PROCEDURE PROC_1(COD INT IN, NOME VARCHAR OUT)
+AS
+	BEGIN
+		--CODIGO--
+	END
+--------------------------------------------------------------------
+CHAMANDO PROCEDURES:
+	ORACLE:
+		BEGIN
+			PROC_A();
+		END
+		
+1 - Criar Proc para inserir UM único departamento (DEPTO)	
+
+2 - Criar Proc para inserir 5 mil registros distintos no Depto
+
+=====================================================================================================================================
+declare cursor c1 is select cod, nome
+	wCod int;
+	wNome varchar(50);
+OPEN C1;
+
+//fetch c1 into wCod, wNome;
+while c1%found
+	begin
+		fetch c1 into wCod, wNome;
+	end
+dealocate
+close c1;
+	
+
+set server output on;
+
+select nome, cod into wNom, wCodform tb 
+where id = 1;
+
+dbms.output.puline('')
+

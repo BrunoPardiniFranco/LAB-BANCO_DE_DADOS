@@ -1,0 +1,26 @@
+CRIAR USUÁRIO NO ORACLE DATABASE:
+	1 - CRIAR UMA CONEXÃO COM UM USUÁRIO COM PERFIM DBA. 
+		No meu caso criei uma conexão cujo nome é 'sys', nome do usuário 'sys as sysdba', senha 'admin' (definida na instalação), nome do host 'localhost', porta '1521', SID 'xe'.
+	
+	2 - Ainda nessa conexão, execute o seguinte comando: CREATE USER brunopardini IDENTIFIED BY brunopardini DEFAULT tablespace users;
+	
+		Explicando o comando acima: 
+			Isto indica que o nome do usuário será brunopardini, que também será a senha. O local lógico em que guardaremos os objetos, tabelas, procedures e funções, será users, uma tablespace existente na nossa base. Selecionaremos tudo e clicaremos no ícone com a seta verde para executarmos o comando. Na aba "Saída do Script" será exibido "User brunopardini criado."
+		
+	3 - Conceda os previlégios necessários ao usuário criado com o seguinte comando: GRANT connect, resource TO brunopardini;
+		
+		Explicando o comando acima: 
+			O comando que faz a concessão de privilégios é o GRANT, e connect, resource são chamados de roles, maneira que temos, no Oracle, de agrupar privilégios comuns a vários usuários. Estas duas roles, portanto, terão o privilégio de create table, procedures e afins, os quais irão possibilitar ao usuário criá-las na base.
+			
+			A cláusula TO indica qual usuário receberá o privilégio, no caso, cursoplsql. Vamos selecionar o comando e executar, da mesma maneira como fizemos anteriormente. Desta vez, aparecerá a mensagem "Grant bem-sucedido".
+			
+	4 - Crie uma nova conexão com o usuário criado:
+		
+		nome da conexão: XABLAU
+		Nome do usuário: brunopardini
+		Senha: brunopardini
+		
+		Nome do host: localhost
+		Porta: 1521
+		SID: xe
+		

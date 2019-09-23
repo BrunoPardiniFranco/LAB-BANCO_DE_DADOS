@@ -1,0 +1,21 @@
+============================================================================================================
+ADICIONANDO PRIMARY KEY EM MYSQL
+============================================================================================================
+To allow naming of a PRIMARY KEY constraint, and for defining a PRIMARY KEY constraint on multiple columns, 
+use the following SQL syntax:
+
+    ALTER TABLE Persons 
+    ADD CONSTRAINT PK_Person 
+    PRIMARY KEY (ID,LastName);
+
+Note: If you use the ALTER TABLE statement to add a primary key, the primary key column(s) 
+must already have been declared to not contain NULL values (when the table was first created).
+============================================================================================================
+ADICIONANDO FOREIGN KEY EM MYSQL
+============================================================================================================
+To allow naming of a FOREIGN KEY constraint, and for defining a FOREIGN KEY constraint on multiple columns, 
+use the following SQL syntax:
+
+    ALTER TABLE Orders
+    ADD CONSTRAINT FK_PersonOrder
+    FOREIGN KEY (PersonID) REFERENCES Persons(PersonID);
